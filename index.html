@@ -18,8 +18,29 @@
                 <option value="medium">Medium Priority</option>
                 <option value="high">High Priority</option>
             </select>
+            <label for="taskDueDate">Task Completion Date:</label>
+            <input type="date" id="taskDueDate">
             <button type="submit">Add Task</button>
         </form>
+         <!-- Filters and Search -->
+         <div id="filters">
+            <select id="filterPriority">
+                <option value="">Filter by Priority</option>
+                <option value="low">Low Priority</option>
+                <option value="medium">Medium Priority</option>
+                <option value="high">High Priority</option>
+            </select>
+
+            <select id="filterStatus">
+                <option value="">Filter by Status</option>
+                <option value="done">Done</option>
+                <option value="notdone">Not Done</option>
+            </select>
+
+            <input style="width: full;" type="text" id="searchInput" placeholder="Search Tasks" />
+            <button id="sortByPriority">Search</button>
+            <button id="sortByDueDate">Sort by Due Date</button>
+        </div>
         <!-- Task List Container -->
         <div id="taskList">
             <div></div>

@@ -1,3 +1,4 @@
+/* Existing body and container styles */
 body {
     font-family: Arial, sans-serif;
     max-width: 600px;
@@ -14,6 +15,44 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+
+/* Styling for the filtering section */
+#filters {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#filters select,
+#filters input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+
+#filters button {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    
+    cursor: pointer;
+    /* background-color: #4CAF50; */
+    /* color: white; */
+    /* font-size: 1rem; */
+    transition: background-color 0.3s ease;
+}
+
+#filters button:hover {
+    background-color: #45a049;
+}
+
+
+/* Styling for the form */
 #taskForm {
     display: flex;
     flex-direction: column;
@@ -25,14 +64,18 @@ body {
 #taskForm textarea,
 #taskForm select,
 #taskForm button {
+    cursor: pointer;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
-
+#taskForm button:hover {
+    background-color: #45a049;
+}
+/* Styling for the task list */
 #taskList {
-    
     background: #fff;
     padding: 10px;
     margin-bottom: 10px;
@@ -50,15 +93,14 @@ body {
     align-items: center;
 }
 
-
-
-
+/* Styling for completed tasks */
 .task-completed {
     text-decoration: line-through;
     color: #888;
     opacity: 0.7;
 }
 
+/* Styling for task actions buttons */
 .task-actions button {
     margin-left: 10px;
     padding: 5px 10px;
@@ -75,4 +117,22 @@ body {
 .delete-btn {
     background-color: #f44336;
     color: white;
+}
+
+/* Empty message styles */
+.empty-message {
+    text-align: center;
+    font-size: 1.5em;
+    color: #ff6347;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin-top: 20px;
+}
+
+/* Hover effects on buttons */
+button:hover {
+    background-color: #45a049;
 }
