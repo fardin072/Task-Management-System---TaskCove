@@ -6,14 +6,13 @@
     <title>Task Cove</title>
     <link rel="stylesheet" href="Styles/style.css">
 </head>
-
 <body>
     <div class="container">
         <h1>Task Manager</h1>
         <!-- Task Input Form -->
         <form id="taskForm">
             <input type="text" id="taskTitle" placeholder="Task Title" required>
-            <textarea id="taskDescription" placeholder="Task Description"></textarea>
+            <textarea id="taskDescription" placeholder="Task Description" required></textarea>
             <select id="taskPriority">
                 <option value="low">Low Priority</option>
                 <option value="medium">Medium Priority</option>
@@ -22,7 +21,9 @@
             <button type="submit">Add Task</button>
         </form>
         <!-- Task List Container -->
-        <div id="taskList"></div>
+        <div id="taskList">
+            <div></div>
+        </div>
     </div>
 
     
