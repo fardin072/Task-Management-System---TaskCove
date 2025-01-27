@@ -1,11 +1,36 @@
 const taskCoveData = JSON.parse(localStorage.getItem("taskCoveData")) || [];
 
-// Form Data function
+// Simulate async data storage with Promises
+const asyncSetItem = (key, value) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      localStorage.setItem(key, value);
+      resolve();
+    }, 100);  // Simulating some delay (e.g., a backend call)
+  });
+};
+
+const asyncGetItem = (key) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(localStorage.getItem(key));
+    }, 100);  // Simulating some delay
+  });
+};
+
+// Form Data function with title uniqueness check
 const formData = () => {
   const title = document.getElementById("taskTitle").value;
   const description = document.getElementById("taskDescription").value;
   const priority = document.getElementById("taskPriority").value;
-  
+
+  // Check if the title already exists in the task array
+  const existingTask = taskCoveData.find((task) => task.title === title);
+  if (existingTask) {
+    alert("Task title must be unique! This title already exists.");
+    return null;  // Return null to prevent task from being added
+  }
+
   // Create a unique ID using timestamp and random number
   const uniqueId = Date.now() + Math.floor(Math.random() * 1000);
 
@@ -21,24 +46,26 @@ const formData = () => {
 };
 
 // Add task to array
-const addTask = (task) => {
-  taskCoveData.push(task);
-  localStorage.setItem("taskCoveData", JSON.stringify(taskCoveData));
-  displayTasks();
+const addTask = async (task) => {
+  if (task) {
+    taskCoveData.push(task);
+    await asyncSetItem("taskCoveData", JSON.stringify(taskCoveData)); // Async saving
+    displayTasks();
+  }
 };
 
 // Remove task by id
-const removeTaskById = (id) => {
+const removeTaskById = async (id) => {
   const taskIndex = taskCoveData.findIndex((task) => task.id === id);
   if (taskIndex !== -1) {
     taskCoveData.splice(taskIndex, 1);
-    localStorage.setItem("taskCoveData", JSON.stringify(taskCoveData));
+    await asyncSetItem("taskCoveData", JSON.stringify(taskCoveData)); // Async saving
     displayTasks();
   }
 };
 
 // Update task by id using prompt
-const updateTaskById = (id) => {
+const updateTaskById = async (id) => {
   const task = taskCoveData.find((task) => task.id === id);
   if (task) {
     // Prompt for new task details
@@ -51,12 +78,19 @@ const updateTaskById = (id) => {
 
     // Validate and update the task
     if (newTitle && newDescription && newPriority) {
+      // Check if the new title already exists
+      const existingTask = taskCoveData.find((task) => task.title === newTitle);
+      if (existingTask) {
+        alert("Task title must be unique! This title already exists.");
+        return;  // Prevent updating the task if the title is not unique
+      }
+
       task.title = newTitle;
       task.description = newDescription;
       task.priority = newPriority;
 
       // Save updated task in localStorage
-      localStorage.setItem("taskCoveData", JSON.stringify(taskCoveData));
+      await asyncSetItem("taskCoveData", JSON.stringify(taskCoveData)); // Async saving
 
       // Re-display tasks
       displayTasks();
@@ -67,11 +101,11 @@ const updateTaskById = (id) => {
 };
 
 // Mark task as done or not done
-const toggleDone = (id) => {
+const toggleDone = async (id) => {
   const task = taskCoveData.find((task) => task.id === id);
   if (task) {
     task.done = !task.done; // Toggle the done status
-    localStorage.setItem("taskCoveData", JSON.stringify(taskCoveData));
+    await asyncSetItem("taskCoveData", JSON.stringify(taskCoveData)); // Async saving
     displayTasks(); // Re-display tasks with updated status
   }
 };
@@ -133,11 +167,21 @@ document.getElementById("taskForm").addEventListener("submit", (e) => {
 
   const taskFormData = formData();
 
-  addTask(taskFormData);
+  if (taskFormData) {
+    addTask(taskFormData);
+  }
 
   // Reset form
   document.getElementById("taskForm").reset();
 });
 
-// Initial task load
-displayTasks();
+// Initial task load (async)
+const loadTasks = async () => {
+  const savedTasks = await asyncGetItem("taskCoveData");
+  if (savedTasks) {
+    taskCoveData.push(...JSON.parse(savedTasks));
+  }
+  displayTasks();
+};
+
+loadTasks();
