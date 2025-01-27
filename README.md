@@ -27,7 +27,7 @@ TaskCove is a simple yet powerful task management web application that allows us
     ```
 2. **Live Link**:
     ```bash
-    git clone https://github.com/fardin072/Task-Management-System---TaskCove.git
+    git clone https://task-cove.netlify.app/
     ```
 
 ## Usage
