@@ -18,23 +18,17 @@ TaskCove is a simple yet powerful task management web application that allows us
 - **Storage**: localStorage for task persistence
 - **No Backend**: The application is completely frontend-based with no need for server-side processing.
 
-## Getting Started
+## Github and Live Link
 
-To run TaskCove on your local machine:
 
-1. **Clone the repository**:
+1. **Github Repo Link**:
     ```bash
-    git clone https://github.com/your-username/taskcove.git
+    https://github.com/fardin072/Task-Management-System---TaskCove.git
     ```
-
-2. **Navigate to the project folder**:
+2. **Live Link**:
     ```bash
-    cd taskcove
+    git clone https://github.com/fardin072/Task-Management-System---TaskCove.git
     ```
-
-3. **Open the `index.html` file in your browser**.
-
-You should now be able to use the TaskCove application in your browser.
 
 ## Usage
 
@@ -72,4 +66,4 @@ Contributions are welcome! Feel free to fork the repository, open issues, and su
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under Fardin Talukder

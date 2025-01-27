@@ -13,6 +13,7 @@ body {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* border: 1px solid black; */
 }
 
 
@@ -39,7 +40,7 @@ body {
     margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    
+
     cursor: pointer;
     /* background-color: #4CAF50; */
     /* color: white; */
@@ -71,9 +72,11 @@ body {
     border-radius: 4px;
     transition: background-color 0.3s ease;
 }
+
 #taskForm button:hover {
     background-color: #45a049;
 }
+
 /* Styling for the task list */
 #taskList {
     background: #fff;
@@ -135,4 +138,7 @@ body {
 /* Hover effects on buttons */
 button:hover {
     background-color: #45a049;
+
 }
+
+
